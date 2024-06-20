@@ -1,0 +1,3 @@
+school_info.json 学校id 只运行一次
+
+school_batch.json 学校批次线 运行两次
