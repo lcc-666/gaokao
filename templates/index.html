@@ -2,141 +2,286 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>信息填写</title>
+    <title>鱼跃龙门</title>
     <style>
         body {
-			font-size: 28px;
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #f4f6f9;
-            display: flex;
-            flex-direction: column;
-        }
-        #nav_title {
-            width: 100%;
-            height: 12.5%;
-            position: fixed;
-            background-color: #1D61EC;
-            display: grid;
-            place-items: center;
-            top: 0;
-            left: 0;
-        }
-        .head_logo {
-            height: 100%;
-            width: auto;
-            margin-top: -10px;
-        }
-        #body_frame {
-            margin-top: 12.5%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #human_support {
-            display: inline-block;
-            float: right;
-            width: 50px;
-            height: 50px;
-            background-color: #f0f0f0;
-            border-radius: 50%;
-            border: 2px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-        }
-        form {
-            background: white;
-			width:90%;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-		input[type="submit"] {
-		    background-color: #1D61EC;
-		    color: white;
-		    border: none;
-		    padding: 10px 20px;
-		    border-radius: 5px;
-		    cursor: pointer;
-		    font-size: 16px;
-		    transition: background-color 0.3s ease;
-		}
-		input[type="submit"]:hover {
-		    background-color: #154bb5;
-		}
-        @media only screen and (max-width: 1000px) {
-			#nav_title {
-			width: 100%;
-			height: 10%;
-			position: fixed;
-			background-color: #1D61EC;
-			display: grid;
-			place-items: center;
-			top: 0;
-			left: 0;
+                font-size: 28px;
+                margin: 0;
+                padding: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #f4f6f9;
+                display: flex;
+                flex-direction: column;
+            }
+            #nav_title {
+                width: 100%;
+                height: 12.5%;
+                position: fixed;
+                margin-top: 0;
+                margin-left: 0;
+                background: linear-gradient(to right bottom, #0ff9fc , #1b89dc , #154bb5);
+                display: grid;
+                place-items: center;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            .head_logo {
+                height: 100%;
+                width: auto;
+                margin-top: -10px;
+            }
+            #body_frame {
+                margin-top: 12.5%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
+                z-index: 1;
+                position: relative;
+            }
+            #bottom_frame {
+                background: #154bb5;
+                color: #fff;
+                display: flex;
+                justify-content: space-between;
+				padding: 10px 20px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+                z-index: 1;
+            }
+            #videoContainer {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: -1;
+            }
+			#school_list {
+			    margin-top: 20px;
+			    padding: 20px;
+			    background-color: #fff;
+			    border-radius: 8px;
+			    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 			}
-            #body_frame {
-            margin-top: 30%;
+
+			#school_list h2 {
+			    font-size: 24px;
+			    color: #333;
+			    margin-bottom: 10px;
+			}
+
+			#school_list ul {
+			    list-style-type: none;
+			    padding: 0;
+			}
+
+			#school_list li {
+			    margin-bottom: 20px;
+			}
+
+			#school_list h3 {
+			    font-size: 20px;
+			    color: #1D61EC;
+			}
+
+			#school_list ul li {
+			    font-size: 18px;
+			    color: #666;
+			}
+
+			#school_list a {
+			    text-decoration: none;
+			    color: #1D61EC;
+			}
+
+			#school_list a:hover {
+			    text-decoration: underline;
+			    color: #154bb5;
+			}
+
+            video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.5;
             }
-        }
-        @media only screen and (max-width: 600px) {
-            #body_frame {
-                margin-top: 50%;
+            form {
+                background: white;
+                width: 90%;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				background-color: rgba(255, 255, 255, 0.8);
             }
-        }
-    </style>
+			form label,input{
+				font-size: 30px;
+			}
+			#nav_title p{
+				font-family:STXinwei;
+				font-size: 50px;
+				margin-top: 2%;
+				color: #bbbbb9;
+			}
+			input[type="text"] {
+			    padding: 5px;
+				color: red;
+			    font-size:25px;
+			    width: 50px;
+				border: 2px solid black;
+			}
+
+            input[type="submit"] {
+                background-color: #1D61EC;
+                color: white;
+                border: none;
+                padding:5px 120px;
+				margin-left: -30px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 28px;
+                transition: background-color 0.3s ease;
+            }
+            input[type="submit"]:hover {
+                background-color: #154bb5;
+            }
+			input[type="radio"] {
+			  width: 30px;
+			  height: 30px;
+			}
+			form p {
+			    margin: 30px;
+			}
+
+            @media only screen and (max-width: 1000px) {
+                #nav_title {
+                    height: 10%;
+                }
+                #body_frame {
+                    margin-top: 30%;
+                }
+				#nav_title p{
+					font-family:STXinwei;
+					font-size: 80px;
+					margin-top: 8%;
+					color: #bbbbb9;
+				}
+				#bottom_frame {
+				    background: #154bb5;
+				    color: #fff;
+				    display: flex;
+				    justify-content: space-between;
+					padding: 10px 20px;
+				    position: fixed;
+				    width: 100%;
+				    bottom: 0;
+				    z-index: 1;
+				}
+				form label,input{
+					font-size: 70px;
+				}
+				form p>input{
+					height:80px;
+					width:30%;
+				}
+				input[type="text"] {
+				    padding: 0px;
+					color: red;
+				    font-size:80px;
+				    width:160px;
+					border: 2px solid black;
+				}
+				input[type="radio"] {
+				  width: 50px;
+				  height: 70px;
+				}
+				input[type="submit"] {
+				    background-color: #1D61EC;
+				    color: white;
+				    border: none;
+				    padding:0px 420px;
+				    border-radius: 20px;
+				    cursor: pointer;
+				    font-size: 28px;
+				    transition: background-color 0.3s ease;
+				}
+            }
+            @media only screen and (max-width: 600px) {
+                #body_frame {
+                    margin-top: 50%;
+                }
+            }
+        </style>
 </head>
 <body>
-    <div id="head_frame">
-        <div id="nav_title">
-            <img src="{{ url_for('static', filename='img/headLogo.png') }}" class="head_logo"/>
-        </div>
+   <div id="head_frame">
+       <div id="nav_title">
+           <p>智慧高考填报推荐系统</p>
+       </div>
+   	<div id="videoContainer">
+   	        <video id="myVideo" autoplay muted loop>
+   	            <source src="img/sea.mp4" type="video/mp4">
+   	            你的浏览器不支持 HTML5 视频标签。
+   	        </video>
+   	    </div>
+   </div>
+   <div id="body_frame">
+       <form action="/school" method="post">
+           <label>选科:</label>
+           <input type="radio" id="science" name="gender" value="science" checked>
+           <label for="science">理科</label>
+           <input type="radio" id="arts" name="gender" value="arts">
+           <label for="arts">文科</label><br/><br/>
+           <label>分数:</label>
+   		<input type="text" name="grade"><label>&nbsp;分<label>
+           <p><input type="submit" value="提交"></p>
+       </form>
     </div>
-    <div id="body_frame">
-        <form action="/school" method="post">
-            <label>选科</label>
-            <input type="radio" id="science" name="gender" value="science" checked>
-            <label for="science">理科</label>
-            <input type="radio" id="arts" name="gender" value="arts">
-            <label for="arts">文科</label><br/><br/>
-            <label>分数</label>
-            <input type="text" name="grade">
-            <p><input type="submit" value="提交"></p>
-        </form>
-        <div id="human_support" onclick="alert('!')">
-            <img src="{{ url_for('static', filename='img/wx.png') }}" width="120%">
-        </div>
+	<div id="school_data">
+		{% if num != 0 %}
+		    <div id="school_list">
+				<p>您的分数是：{{ num }}</p>
+				<p>您的排名是：{{ grade[1] }}</p>
+		        <h2>您可以考虑以下学校:</h2>
+		        <ul>
+		            {% for k, v in re_dt.items() %}
+		                <li>
+		                    <h3><a href="{{ url_for('school_major', school_name=k) }}" target="_blank">{{ k }}</a></h3>
+		                    <ul>
+		                        {% for item in v %}
+		                            <li>{{ item[0] }} {{ item[1] }} {{ item[2] }}</li>
+		                        {% endfor %}
+		                    </ul>
+		                </li>
+		            {% endfor %}
+		        </ul>
+		    </div>
+			<div style="height: 100px;"></div>
+		{% endif %}
+
+	</div>
+    <div id="bottom_frame">
+    	<div id="bottom_left">
+    		<p>京·性感阿超全国可✈ | Copyright</p>
+    	</div>
+    	<div id="bottom_right">
+    		<p>京·性感阿超全国可✈ | Copyright</p>
+    	</div>
     </div>
-    <div id="bottom_frame"></div>
-
-{% if num !=0 %}
-    你的分数是：{{ num }}<br>
-    你的排名是：{{ grade[1] }}<br>
-    可以考虑以下学校<br>
-    {% for k,v in re_dt.items() %}
-        <tr>
-                <br><td><a href={{ url_for('school_major',school_name=k) }} target="_blank">{{k}}</a></td><br>
-    {#    <td> 批次 分数线 排名</td><br>#}
-                <td>{% for item in v %}</td>
-                    <td>{{ item[0] }}</td>
-                    <td>{{ item[1] }}</td>
-                    <td>{{ item[2] }}</td><br>
-                    <td>{% endfor %}</td><br>
-            </tr>
-    {% endfor %}
-
-{% endif %}
-
+<script>
+	        document.addEventListener('DOMContentLoaded', function() {
+	            var video = document.getElementById('myVideo');
+	            video.play();
+	        });
+	    </script>
 
 </body>
 </html>
