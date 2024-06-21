@@ -13,7 +13,7 @@ collection = db.test
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return render_template('index.html')
+    return render_template('index.html', num=0)
 
 
 # 查询可考虑学校
@@ -27,17 +27,15 @@ def result():
         get_school = fun.get_school.get_school
         # 获取可以上的学校
         school_grade, re_dt = get_school(type_sub, grade)
-        return render_template('school_ls.html', grade=school_grade, re_dt=re_dt, num=grade)
+        return render_template('index.html', grade=school_grade, re_dt=re_dt, num=grade)
+
 
 @app.route('/school_major/<school_name>/')
 def school_major(school_name):
     from fun.school_major import school_id
-    school_id=school_id(school_name)
-    url='https://www.gaokao.cn/school/{}/provinceline'
+    school_id = school_id(school_name)
+    url = 'https://www.gaokao.cn/school/{}/provinceline'
     return redirect(url.format(school_id))
-
-
-
 
 
 if __name__ == '__main__':

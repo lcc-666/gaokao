@@ -118,5 +118,25 @@
         </div>
     </div>
     <div id="bottom_frame"></div>
+
+{% if num !=0 %}
+    你的分数是：{{ num }}<br>
+    你的排名是：{{ grade[1] }}<br>
+    可以考虑以下学校<br>
+    {% for k,v in re_dt.items() %}
+        <tr>
+                <br><td><a href={{ url_for('school_major',school_name=k) }} target="_blank">{{k}}</a></td><br>
+    {#    <td> 批次 分数线 排名</td><br>#}
+                <td>{% for item in v %}</td>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td><br>
+                    <td>{% endfor %}</td><br>
+            </tr>
+    {% endfor %}
+
+{% endif %}
+
+
 </body>
 </html>
