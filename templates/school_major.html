@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>您的分数是：{{ num }}</p>
+<p>您的排名是：{{ grade }}</p>
+{{ school_name }}<br><br>
+
+{% if type_sub == 'science' %}
+    理科<br>
+{% else %}
+    文科<br>
+{% endif %}
+
+{% for k,v in major_dt.items() %}
+    <br>{{ k }}<br>
+    {% for k1,v1 in v.items() %}
+        {{ k1 }}
+        {{ v1[0] }}
+        {{ v1[1] }}<br>
+    {% endfor %}
+
+
+{% endfor %}
+
+
+</body>
+</html>

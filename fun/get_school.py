@@ -19,7 +19,7 @@ def get_school(type_sub, grade):
 
     re = collection.find_one({'grade': grade_line}, {'_id': 0, 'grade': 0})
     # print(re.keys())
-    print(re[grade])
+    # print(re[grade])
     school_grade = re[grade]
     # 一分一段表最低和最高
     min_grade_line = int(list(re.keys())[0])
@@ -69,7 +69,7 @@ def get_school(type_sub, grade):
                 school_re[k] = v
     # print(max_rank, min_rank)
     # print(school_re)
-    return (school_grade, school_re)
+    return (school_grade[1], school_re)
 
 
 def ranges_overlap(range1, range2):
