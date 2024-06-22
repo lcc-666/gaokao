@@ -22,18 +22,28 @@
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
+            width: 90%;
             text-align: center;
             margin: 10px 0;
+			justify-content: space-between;
         }
         .content-box {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            width: 80%;
+            width: 90%;
             margin: 20px 0;
         }
+		.content-box p{
+			background-color: #ffffff;
+			padding: 15px 20px;
+			border-radius: 80px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			width: 95%;
+			text-align: center;
+			margin: 10px 10px;
+		}
         .major {
             margin-top: 10px;
         }
@@ -46,7 +56,13 @@
         .major-item {
             padding: 5px 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
+        }
+        .major-item > span:first-child {
+		    margin-right: auto;
+		}
+        .major-item > span {
+            margin-left: 20px;
         }
         .major-item:nth-child(odd) {
             background-color: #f0f8ff;
