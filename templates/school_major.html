@@ -2,31 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>信息页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #154bb5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #1b89dc;
+        }
+        p {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .content-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 20px 0;
+        }
+        .major {
+            margin-top: 10px;
+        }
+        .major-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #1b89dc;
+            margin-bottom: 10px;
+        }
+        .major-item {
+            padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .major-item:nth-child(odd) {
+            background-color: #f0f8ff;
+        }
+        .major-item:nth-child(even) {
+            background-color: #e6f2ff;
+        }
+    </style>
 </head>
 <body>
 
+<h1>成绩信息</h1>
+
 <p>您的分数是：{{ num }}</p>
 <p>您的排名是：{{ grade }}</p>
-{{ school_name }}<br><br>
-
-{% if type_sub == 'science' %}
-    理科<br>
-{% else %}
-    文科<br>
-{% endif %}
+<div class="content-box">
+    <p>{{ school_name }}</p>
+    <p>{% if type_sub == 'science' %}理科{% else %}文科{% endif %}</p>
+</div>
 
 {% for k,v in major_dt.items() %}
-    <br>{{ k }}<br>
-    {% for k1,v1 in v.items() %}
-        {{ k1 }}
-        {{ v1[0] }}
-        {{ v1[1] }}<br>
-    {% endfor %}
-
-
+    <div class="content-box major">
+        <div class="major-header">{{ k }}</div>
+        {% for k1,v1 in v.items() %}
+            <div class="major-item">
+                <span>{{ k1 }}</span>
+                <span>{{ v1[0] }}</span>
+                <span>{{ v1[1] }}</span>
+            </div>
+        {% endfor %}
+    </div>
 {% endfor %}
-
 
 </body>
 </html>
