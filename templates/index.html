@@ -214,12 +214,12 @@
 <div id="web_notice" class="web_notice" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;">
     <div style="position:fixed;top:50%;left:50%;width:550px;background:rgb(36,46,59);transform:translate(-50%,-50%);border-radius:40px;padding:50px 40px;">
         <div style="color:#FFF;word-wrap:break-word;">
-            <h2 style="color:#df2121;display:flex;flex-direction:column;align-items:center;">性感阿超全国可飞</h2>
-            为维护网站的正常运作，本站设立澡堂子，并开通了新的下海主线，产生了不小的费用。为个人买卖，二人小团队，一人收钱一人服务。现在开通高级订阅通道，具体信息：<br>1，订阅费用：5元/月。<br>2，订阅期间：<br>&nbsp;&nbsp;&nbsp;&nbsp;a，可享受性感超哥全国可✈；<br>&nbsp;&nbsp;&nbsp;&nbsp;b，解锁高级超哥使用权；<br>&nbsp;&nbsp;&nbsp;&nbsp;c，让超哥买桶六味地黄丸回回血。
+            <h2 style="color:#df2121;display:flex;flex-direction:column;align-items:center;">使用提示</h2>
+            <br>当您第一次点击某院校，并第一次加载该院校的数据时会有"5s~10S"的数据爬取，请耐心等待。<br><br><br><br>
         </div>
         <div>
-            <a href="https://afdian.net/order/create?plan_id=" style="display:block;background:#1b25c5;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:left;">支持一下</a>
-            <a id="closeNotice" style="user-select:none;display:block;background:#43bf34;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:right;" onclick="javascript:document.querySelector('.web_notice').remove()">我知道了</a>
+			<a id="closeNotice" style="user-select:none;display:block;background:#43bf34;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:left;" onclick="javascript:document.querySelector('.web_notice').remove()">不再提示</a>
+            <a id="tmpcloseNotice" href="#" style="display:block;background:#1b25c5;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:right;">确认</a>
         </div>
     </div>
 </div>
@@ -279,33 +279,44 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var video = document.getElementById('myVideo');
-        video.play();
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-        // 检查本地存储中是否存在标记
-        var noticeClosed = localStorage.getItem('noticeClosed');
+   document.addEventListener('DOMContentLoaded', function() {
+       var video = document.getElementById('myVideo');
+       video.play();
+   });
 
-        // 如果存在标记，则隐藏通知
-        if (noticeClosed) {
-            document.getElementById('web_notice').style.display = 'none';
-        }
+   document.addEventListener('DOMContentLoaded', function() {
+       // 检查本地存储中是否存在标记
+       var noticeClosed = localStorage.getItem('noticeClosed');
+       var tmpCloseNoticeButton = document.getElementById('tmpcloseNotice');
 
-        // 获取关闭按钮并添加点击事件处理
-        document.getElementById('closeNotice').addEventListener('click', function() {
-            // 设置本地存储标记
-            localStorage.setItem('noticeClosed', 'true');
-            // 隐藏通知
-            document.getElementById('web_notice').style.display = 'none';
-        });
+       // 如果存在标记，则隐藏通知
+       if (noticeClosed) {
+           document.getElementById('web_notice').style.display = 'none';
+       }
 
-        // 获取表单并添加提交事件处理
-        document.querySelector('form').addEventListener('submit', function() {
-            // 设置本地存储标记
-            localStorage.setItem('noticeClosed', 'true');
-        });
-    });
+       // 获取关闭按钮并添加点击事件处理
+       document.getElementById('closeNotice').addEventListener('click', function() {
+           // 设置本地存储标记
+           localStorage.setItem('noticeClosed', 'true');
+           // 隐藏通知
+           document.getElementById('web_notice').style.display = 'none';
+       });
+
+       // 获取tmpcloseNotice按钮并添加点击事件处理
+       if (tmpCloseNoticeButton) {
+           tmpCloseNoticeButton.addEventListener('click', function() {
+               // 隐藏通知
+               document.getElementById('web_notice').style.display = 'none';
+           });
+       }
+
+       // 获取表单并添加提交事件处理
+       document.querySelector('form').addEventListener('submit', function() {
+           // 设置本地存储标记
+           localStorage.setItem('noticeClosed', 'true');
+       });
+   });
+
 </script>
 
 </body>
