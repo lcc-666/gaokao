@@ -243,7 +243,7 @@
         <input type="radio" id="arts" name="gender" value="arts">
         <label for="arts">文科</label><br/><br/>
         <label>分数:</label>
-        <input type="text" name="grade"><label>&nbsp;分<label>
+        <input type="text" id="numericInput" oninput="validateInput(this)"><label>&nbsp;分<label>
         <p><input type="submit" value="提交"></p>
     </form>
 </div>
@@ -316,7 +316,19 @@
            localStorage.setItem('noticeClosed', 'true');
        });
    });
+		//输入规则限定（仅允许输入数字）
+		function validateInput(input) {
+		        // 获取输入的值
+		        let value = input.value;
 
+		        // 使用正则表达式检查是否为数字
+		        if (!/^\d*$/.test(value)) {
+		            // 如果输入的不是数字，则弹出警告框
+		            alert("请输入合理分数！");
+		            // 清空输入框或者恢复为之前的有效输入
+		            input.value = value.replace(/\D/g, '');
+		        }
+		    }
 </script>
 
 </body>
