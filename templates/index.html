@@ -174,17 +174,6 @@
 					margin-top: 8%;
 					color: #bbbbb9;
 				}
-				#bottom_frame {
-				    background: #154bb5;
-				    color: #fff;
-				    display: flex;
-				    justify-content: space-between;
-					padding: 10px 20px;
-				    position: fixed;
-				    width: 100%;
-				    bottom: 0;
-				    z-index: 1;
-				}
 				form label,input{
 					font-size: 70px;
 				}
@@ -222,6 +211,17 @@
         </style>
 </head>
 <body>
+<div class="web_notice" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;">
+  <div style="position:fixed;top:50%;left:50%;width:550px;background:rgb(36,46,59);transform:translate(-50%,-50%);border-radius:40px;padding:50px 40px;">
+    <div style="color:#FFF;word-wrap:break-word;"><h2 style="color:#df2121;display:flex;flex-direction:column;align-items:center;">性感阿超全国可飞</h2>为维护网站的正常运作，本站设立澡堂子，并开通了新的下海主线，产生了不小的费用。为个人买卖，二人小团队，一人收钱一人服务。现在开通高级订阅通道，具体信息：<br>1，订阅费用：5元/月。<br>2，订阅期间：<br>&nbsp;&nbsp;&nbsp;&nbsp;a，可享受性感超哥全国可✈；<br>&nbsp;&nbsp;&nbsp;&nbsp;b，解锁高级超哥使用权；<br>&nbsp;&nbsp;&nbsp;&nbsp;c，让超哥买桶六味地黄丸回回血。</div>
+    <div>
+      <a href="https://afdian.net/order/create?plan_id=" style="display:block;background:#1b25c5;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:left;">支持一下</a>
+      <a style="user-select:none;display:block;background:#43bf34;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:right;" onclick="javascript:document.querySelector('.web_notice').remove()">我知道了</a>
+    </div>
+  </div>
+</div>
+
+
    <div id="head_frame">
        <div id="nav_title">
            <p>智慧高考填报推荐系统</p>
