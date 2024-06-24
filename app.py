@@ -6,7 +6,9 @@ app = Flask(__name__, static_url_path='')
 
 from pymongo import MongoClient
 
-client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+import fun.pymon
+
+client = fun.pymon.conn_mongo()
 
 # 指定数据库和集合
 db = client.school
