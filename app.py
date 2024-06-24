@@ -4,8 +4,6 @@ from os import urandom
 
 app = Flask(__name__, static_url_path='')
 
-from pymongo import MongoClient
-
 import fun.pymon
 
 client = fun.pymon.conn_mongo()
