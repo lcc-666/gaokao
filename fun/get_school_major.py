@@ -28,7 +28,7 @@ def get_school_major(school_name):
     # 获取文理科专业批次线
     for mojar_type in ['1', '2']:
         response = requests.get(url.format(mojar_type, school_id), headers=headers).text
-        response = json.loads(response, encoding='utf-8')
+        response = json.loads(response)
         batch_ls = []
         for batch in response['data']['item']:
             batch_ls.append((batch['local_batch_id'], batch["local_batch_name"]))
