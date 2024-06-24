@@ -5,7 +5,9 @@ import requests
 import json
 import random
 
-from pymongo import MongoClient
+import fun.pymon
+
+import fun.pymon
 
 
 # 插入文理科各专业批次线
@@ -39,7 +41,7 @@ def get_school_major(school_name):
         else:
             target_dt['文科'] = temp_dt
 
-    client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+    client = fun.pymon.conn_mongo()
 
     # 指定数据库和集合
     db = client.school
@@ -79,7 +81,7 @@ def get_school_majors_batch(batch_id, school_id, major_type):
 # 判断mongo中是否存在专业 有就查询返回 没有就查询插入然后返回
 def bol_major(school_name):
     # print(school_name)
-    client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+    client = fun.pymon.conn_mongo()
 
     # 指定数据库和集合
     db = client.school

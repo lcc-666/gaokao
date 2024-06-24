@@ -3,7 +3,7 @@
 import requests
 import json
 import time
-from pymongo import MongoClient
+import fun.pymon
 
 headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
@@ -19,7 +19,7 @@ for v in re['data']['section_list'].values():
         # print(i['score'], i['num'], i['total'])
 print(re_ls)
 
-client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+client = fun.pymon.conn_mongo()
 
 # 指定数据库和集合
 db = client.school

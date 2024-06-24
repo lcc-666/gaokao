@@ -1,6 +1,6 @@
 # 通过选课和分数筛选可以考虑的学校
 
-from pymongo import MongoClient
+import fun.pymon
 
 
 # 通过选课确定查询表
@@ -11,7 +11,7 @@ def get_school(type_sub, grade):
     else:
         grade_line = '文科一分一段'
 
-    client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+    client = fun.pymon.conn_mongo()
 
     # 指定数据库和集合
     db = client.school

@@ -1,7 +1,7 @@
-from pymongo import MongoClient
+import fun.pymon
 
 def school_id(name):
-    client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+    client = fun.pymon.conn_mongo()
 
     # 指定数据库和集合
     db = client.school

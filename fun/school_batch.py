@@ -1,11 +1,11 @@
 import random
 
-from pymongo import MongoClient
+import fun.pymon
 
 
 # 读取学校id
 def school_id():
-    client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+    client = fun.pymon.conn_mongo()
 
     # 指定数据库和集合
     db = client.school
@@ -78,7 +78,7 @@ singo_dt['type'] = '文科'
 singo_dt['batch'] = dt
 print(singo_dt)
 
-client = MongoClient(host='127.0.0.1', port=27017, username="admin", password="123456")
+client = fun.pymon.conn_mongo()
 
 # 指定数据库和集合
 db = client.school
