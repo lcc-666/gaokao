@@ -22,8 +22,14 @@ def get_school(type_sub, grade):
     # print(re[grade])
     school_grade = re[grade]
     # 一分一段表最低和最高
-    min_grade_line = int(list(re.keys())[0])
-    max_grade_line = int(list(re.keys())[-2])
+    re_ls = []
+    for x in re.keys():
+        if '-' not in x:
+            re_ls.append(int(x))
+    re_ls.sort()
+
+    min_grade_line = re_ls[0]
+    max_grade_line = re_ls[-1]
     # 将分数上下浮动15分获取相应排名
     num = 10
     if int(grade) + num >= max_grade_line:
@@ -91,7 +97,7 @@ def ranges_overlap(range1, range2):
 
 
 if __name__ == '__main__':
-    get_school(type_sub='science', grade='489')
+    get_school(type_sub='science', grade='447')
     # range1 = (3, 5)
     # range2 = (1, 8)
     #
