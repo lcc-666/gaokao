@@ -31,7 +31,7 @@ def get_school(type_sub, grade):
     min_grade_line = re_ls[0]
     max_grade_line = re_ls[-1]
     # 将分数上下浮动15分获取相应排名
-    num = 10
+    num = 15
     if int(grade) + num >= max_grade_line:
         max_grade = max_grade_line
     else:
