@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2c及以下</title>
+</head>
+<body>
+<form action="/2cinfo" method="post">
+    <input type="text" name="school_name">
+    <input type="submit" value="查询院校">
+</form>
+
+
+{% for k in school_info.keys() %}
+    <a href="{{ url_for('get_2c_info_a',school_name=k) }}">{{ k }}</a><br>
+{% endfor %}
+
+
+</body>
+</html>

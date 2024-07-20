@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 
 from os import urandom
 
@@ -55,6 +55,39 @@ def school_major(school_name):
 
     return render_template('school_major.html', school_name=re['school_name'], major_dt=major_dt, type_sub=type_sub,
                            num=num, grade=grade)
+
+
+@app.route('/2c', methods=["POST", "GET"])
+def get_2c_school():
+    f = open('fun/2c/2c.txt', 'r', encoding='utf-8').readlines()
+    dt = {}
+    for item in f:
+        k, v = item.strip().split(':')
+        dt[k] = v
+    return render_template('2c.html', school_info=dt)
+
+
+@app.route('/2cinfo', methods=["POST", "GET"])
+def get_2c_info():
+    result = request.form
+    school_name = result['school_name']
+    import fun.get_school_major
+    bol_major = fun.get_school_major.bol_major
+    re = bol_major(school_name)
+    li_dt = re['理科']
+    wen_dt = re['文科']
+    return render_template('2c_school_major.html', wen_dt=wen_dt, li_dt=li_dt, school_name=school_name)
+
+
+@app.route('/2cinfo_a/<school_name>')
+def get_2c_info_a(school_name):
+    school_name = school_name
+    import fun.get_school_major
+    bol_major = fun.get_school_major.bol_major
+    re = bol_major(school_name)
+    li_dt = re['理科']
+    wen_dt = re['文科']
+    return render_template('2c_school_major.html', wen_dt=wen_dt, li_dt=li_dt, school_name=school_name)
 
 
 if __name__ == '__main__':

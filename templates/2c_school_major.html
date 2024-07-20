@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #154bb5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #1b89dc;
+        }
+
+        p {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            text-align: center;
+            margin: 10px 0;
+            justify-content: space-between;
+        }
+
+        .content-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            margin: 20px 0;
+        }
+
+        .content-box p {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 80px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            text-align: center;
+            margin: 10px 10px;
+        }
+
+        .major {
+            margin-top: 10px;
+        }
+
+        .major-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #1b89dc;
+            margin-bottom: 10px;
+        }
+
+        .major-item {
+            padding: 5px 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .major-item > span:first-child {
+            margin-right: auto;
+        }
+
+        .major-item > span {
+            margin-left: 80px;
+        }
+
+        .major-item:nth-child(odd) {
+            background-color: #f0f8ff;
+        }
+
+        .major-item:nth-child(even) {
+            background-color: #e6f2ff;
+        }
+    </style>
+</head>
+<body>
+
+<p>{{ school_name }}</p>
+<p>文科信息</p>
+{% for k,v in wen_dt.items() %}
+    <div class="content-box major">
+        <div class="major-header">{{ k }}</div>
+        <div class="major-item" style="color: white;background-color:#154bb5">
+            <span>专业名称</span>
+            <span style="margin-right: 20px;">2023年·分数线</span>
+            <span style="margin-left: 0px;margin-right: 10px;">专业排名</span>
+        </div>
+        {% for k1,v1 in v.items() %}
+            <div class="major-item">
+                <span>{{ k1 }}</span>
+                <span>{{ v1[0] }}</span>
+                <span style="margin-right: 20px;">{{ v1[1] }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+<p>理科信息</p>
+{% for k,v in li_dt.items() %}
+    <div class="content-box major">
+        <div class="major-header">{{ k }}</div>
+        <div class="major-item" style="color: white;background-color:#154bb5">
+            <span>专业名称</span>
+            <span style="margin-right: 20px;">2023年·分数线</span>
+            <span style="margin-left: 0px;margin-right: 10px;">专业排名</span>
+        </div>
+        {% for k1,v1 in v.items() %}
+            <div class="major-item">
+                <span>{{ k1 }}</span>
+                <span>{{ v1[0] }}</span>
+                <span style="margin-right: 20px;">{{ v1[1] }}</span>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+
+</body>
+</html>
