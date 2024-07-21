@@ -2,9 +2,16 @@
 import json
 
 if __name__ == '__main__':
-    f = open('2c.txt', 'r', encoding='utf-8').readlines()
-    dt = {}
-    for item in f:
-        k, v = item.strip().split(':')
-        dt[k] = v
-    print(dt)
+    from fun.pymon import conn_mongo
+
+    client = conn_mongo()
+    db = client.school
+    collection = db.test
+
+    f = open('school_info.json', 'r', encoding='utf-8').readlines()
+
+    re = collection.find_one()
+    for item in set(f):
+        re['school_id'].append(eval(item.strip()))
+
+    collection.update_one({'_id': re['_id']}, {'$set': {'school_id': re['school_id']}})
