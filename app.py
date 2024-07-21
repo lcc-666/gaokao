@@ -59,12 +59,8 @@ def school_major(school_name):
 
 @app.route('/2c', methods=["POST", "GET"])
 def get_2c_school():
-    f = open('fun/2c/2c.txt', 'r', encoding='utf-8').readlines()
-    dt = {}
-    for item in f:
-        k, v = item.strip().split(':')
-        dt[k] = v
-    return render_template('2c.html', school_info=dt)
+    re = collection.find_one({'type': '2c'})
+    return render_template('2c.html', school_info=re['school_id'])
 
 
 @app.route('/2cinfo', methods=["POST", "GET"])

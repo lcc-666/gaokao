@@ -1,5 +1,4 @@
-# 获取学校id信息
-import json
+# 将专科学校信息插入mongo
 
 if __name__ == '__main__':
     from fun.pymon import conn_mongo
