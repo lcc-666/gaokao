@@ -160,6 +160,17 @@
         form p {
             margin: 30px;
         }
+        input[type="button"]{
+                background-color: #29df09;
+                color: white;
+                border: none;
+                padding:5px 120px;
+                margin-left: 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 28px;
+                transition: background-color 0.3s ease;
+            }
 
         @media only screen and (max-width: 1000px) {
             #nav_title {
@@ -202,6 +213,16 @@
                 font-size: 28px;
                 transition: background-color 0.3s ease;
             }
+            input[type="button"]{
+                background-color: #29df09;
+                color: white;
+                border: none;
+                padding:0px 20px 420px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 28px;
+                transition: background-color 0.3s ease;
+            }
         }
         @media only screen and (max-width: 600px) {
             #body_frame {
@@ -237,6 +258,7 @@
 </div>
 <div id="body_frame">
     <form action="/school" method="post">
+        <h1 style="font-size: 25px">本科批志愿填报</h1>
         <label>选科:</label>
         <input type="radio" id="science" name="gender" value="science" checked>
         <label for="science">理科</label>
@@ -244,7 +266,7 @@
         <label for="arts">文科</label><br/><br/>
         <label>分数:</label>
         <input type="text" id="numericInput" name="grade" oninput="validateInput(this)"><label>&nbsp;分<label>
-        <p><input type="submit" value="提交"></p>
+        <p><input type="submit" value="提交"><input type="button" onclick="toc()" value="2C及专科批点此填报"></p>
     </form>
 </div>
 <div id="school_data">
@@ -329,6 +351,11 @@
 		            input.value = value.replace(/\D/g, '');
 		        }
 		    }
+        function toc() {
+            console.log("跳转2C页面");
+            window.location.href = "./2c";
+        }
+
 </script>
 
 </body>

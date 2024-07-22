@@ -3,18 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>2c及以下</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .searchC {
+            width: 90%;
+			    height: 50px;
+			    background-color: rgba(255, 255, 255, 0.772);
+			    border-radius: 5px;
+			    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+			    padding: 20px;
+			    margin: 0 auto;
+			    position: relative;
+			    top: 2%;
+        }
+
+        .searchC input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .searchC input[type="text"]:focus {
+            outline: none;
+            border-color: #1D61EC;
+        }
+
+        .searchC input[type="submit"] {
+            background-color: #1D61EC;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .searchC input[type="submit"]:hover {
+            background-color: #154bb5;
+        }
+
+        .school {
+            width: 90%;
+			    height: auto;
+			    background-color: rgba(255, 255, 255, 0.772);
+			    border-radius: 5px;
+			    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+			    padding: 20px;
+			    margin: 0 auto;
+			    position: relative;
+			    top: 30%;
+                margin-top:20px;
+
+        }
+
+    </style>
 </head>
 <body>
-<form action="/2cinfo" method="post">
-    <input type="text" name="school_name">
-    <input type="submit" value="查询院校">
-</form>
+<div class="searchC">
+    <form action="/2cinfo" method="post">
+        <input type="text" name="school_name" placeholder="输入学校名称">
+        <input type="submit" value="查询院校">
+    </form>
+</div>
 
-
-{% for k in school_info.keys() %}
-    <a href="{{ url_for('get_2c_info_a',school_name=k) }}">{{ k }}</a><br>
-{% endfor %}
-
+<div class="school">
+    {% for k in school_info.keys() %}
+        <a href="{{ url_for('get_2c_info_a',school_name=k) }}">{{ k }}</a><br>
+    {% endfor %}
+</div>
 
 </body>
 </html>
