@@ -63,7 +63,24 @@
 			    position: relative;
 			    top: 30%;
                 margin-top:20px;
+                text-align: center;
+                column-count: 2; /* 将院校名称分成两栏 */
+                column-gap: 40px; /* 设置两栏之间的间距 */
+        }
+        .school a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            color: #666; /* 灰色 */
+            font-size: 18px;
+            text-decoration: none;
+            font-family: '楷体'; /* 设置楷体 */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
+        .school a:hover {
+            background-color: #154bb5;
+            color: #fff; /* 悬停时加深颜色 */
         }
 
     </style>
