@@ -2,75 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>鱼跃龙门</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧高考填报推荐系统</title>
     <style>
-        body {
-            font-size: 28px;
+        * {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
             background-color: #f4f6f9;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
+
         #nav_title {
             width: 100%;
-            height: 12.5%;
-            position: fixed;
-            margin-top: 0;
-            margin-left: 0;
+            height: 80px;
             background: linear-gradient(to right bottom, #0ff9fc , #1b89dc , #154bb5);
-            display: grid;
-            place-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: 1;
         }
-        .head_logo {
-            height: 100%;
-            width: auto;
-            margin-top: -10px;
+
+        #nav_title p {
+            font-family: STXinwei, Arial, sans-serif;
+            font-size: 36px;
+            color: #ffffff;
+            margin: 0;
         }
+
         #body_frame {
-            margin-top: 12.5%;
+            width: 90%;
+            max-width: 1200px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             flex: 1;
-            z-index: 1;
+            margin-top: 150px;
             position: relative;
+            z-index: 0;
         }
-        #bottom_frame {
-            background: #154bb5;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            position: fixed;
+
+        form {
             width: 100%;
-            bottom: 0;
-            z-index: 1;
-        }
-        #videoContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: -1;
-        }
-        #school_list {
-            margin-top: 20px;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        form h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form label {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        form input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        form input[type="text"] {
+            padding: 8px;
+            font-size: 18px;
+            width: 50px;
+            border: 2px solid black;
+            margin-right: 0px;
+            color:red;
+        }
+
+        form input[type="submit"] {
+            background-color: #1D61EC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            margin-top: 8px;
+        }
+        form input[type="button"]{
+            background-color: rgb(255,69,58);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            margin-top: 8px;
+        }
+
+        form input[type="submit"]:hover {
+        background-color: #154bb5;
+       }
+
+        form input[type="button"]:hover {
+        background-color: rgb(125,0,21);
+        }
+
+
+        #school_list {
+            width: 100%;
+            max-width: 800px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
         }
 
         #school_list h2 {
@@ -108,203 +170,168 @@
             color: #154bb5;
         }
 
-        video {
+        #bottom_frame {
+            width: 100%;
+            background: #154bb5;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        #bottom_frame p {
+            margin: 0;
+        }
+
+        video#myVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0.5;
+            z-index: -1;
         }
-        form {
-            background: white;
-            width: 90%;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        form label,input{
-            font-size: 30px;
-        }
-        #nav_title p{
-            font-family:STXinwei;
-            font-size: 50px;
-            margin-top: 2%;
-            color: #bbbbb9;
-        }
-        input[type="text"] {
-            padding: 5px;
-            color: red;
-            font-size:25px;
-            width: 50px;
-            border: 2px solid black;
-        }
-
-        input[type="submit"] {
-            background-color: #1D61EC;
-            color: white;
-            border: none;
-            padding:5px 120px;
-            margin-left: -30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 28px;
-            transition: background-color 0.3s ease;
-        }
-        input[type="submit"]:hover {
-            background-color: #154bb5;
-        }
-        input[type="radio"] {
-            width: 30px;
-            height: 30px;
-        }
-        form p {
-            margin: 30px;
-        }
-        input[type="button"]{
-                background-color: #ef8082;
-                color: white;
-                border: none;
-                padding:5px 120px;
-                margin-left: 20px;
-                border-radius: 5px;
-                text-align: center;
-                cursor: pointer;
-                font-size: 28px;
-                transition: background-color 0.3s ease;
-            }
 
         @media only screen and (max-width: 1000px) {
-            #nav_title {
-                height: 10%;
+            #nav_title p {
+                font-size: 30px;
             }
+
             #body_frame {
-                margin-top: 30%;
+                margin-top: 120px;
             }
-            #nav_title p{
-                font-family:STXinwei;
-                font-size: 80px;
-                margin-top: 8%;
-                color: #bbbbb9;
+
+            form {
+                max-width: 100%;
             }
-            form label,input{
-                font-size: 70px;
+
+            form h1 {
+                font-size: 20px;
             }
-            form p>input{
-                height:80px;
-                width:30%;
+
+            form label {
+                font-size: 16px;
             }
-            input[type="text"] {
-                padding: 0px;
-                color: red;
-                font-size:80px;
-                width:160px;
-                border: 2px solid black;
+
+            form input[type="text"] {
+                font-size: 14px;
+                width: 100px;
             }
-            input[type="radio"] {
-                width: 50px;
-                height: 70px;
+
+            form input[type="submit"], form input[type="button"] {
+                padding: 8px 16px;
+                font-size: 16px;
             }
-            input[type="submit"] {
-                background-color: #1D61EC;
-                color: white;
-                border: none;
-                padding:0px 420px;
-                border-radius: 20px;
-                cursor: pointer;
-                font-size: 28px;
-                transition: background-color 0.3s ease;
+
+            #school_list {
+                max-width: 90%;
             }
-            input[type="button"]{
-                background-color: #ef8082;
-                width:107%;
-                color: white;
-                border: none;
-                padding:0;
-                border-radius: 20px;
-                margin-left: -30px;
-                cursor: pointer;
-                font-size: 28px;
-                transition: background-color 0.3s ease;
+
+            #bottom_frame {
+                padding: 8px 16px;
             }
         }
+
         @media only screen and (max-width: 600px) {
             #body_frame {
-                margin-top: 50%;
+                margin-top: 250px;
+                 align-items: center;
             }
+
+            form {
+                padding: 15px;
+            }
+
+            form h1 {
+                font-size: 23px;
+            }
+
+            form label {
+                font-size: 20px;
+            }
+
+            form input[type="text"] {
+                font-size: 15px;
+                width: 50px;
+            }
+
+            form input[type="submit"], form input[type="button"] {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            #school_list {
+            width: 100%;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         }
     </style>
 </head>
 <body>
-<div id="web_notice" class="web_notice" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:99999;">
-    <div style="position:fixed;top:50%;left:50%;width:550px;background:rgb(36,46,59);transform:translate(-50%,-50%);border-radius:40px;padding:50px 40px;">
-        <div style="color:#FFF;word-wrap:break-word;">
-            <h2 style="color:#df2121;display:flex;flex-direction:column;align-items:center;">使用提示</h2>
-            <br>当您第一次点击某院校，并第一次加载该院校的数据时会有"5s~10S"的数据爬取，请耐心等待。<br><br><br><br>
-        </div>
-        <div>
-			<a id="closeNotice" style="user-select:none;display:block;background:#43bf34;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:left;" onclick="javascript:document.querySelector('.web_notice').remove()">不再提示</a>
-            <a id="tmpcloseNotice" href="#" style="display:block;background:#1b25c5;color:#FFF;text-align:center;font-weight:bold;font-size:19px;line-height:49px;margin-top:11px;border-radius:5px;width:40%;float:right;">确认</a>
-        </div>
-    </div>
+<video id="myVideo" autoplay muted loop>
+    <source src="{{ url_for('static', filename='video/sea.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div id="nav_title">
+    <p>智慧高考填报推荐系统</p>
 </div>
 
-<div id="head_frame">
-    <div id="nav_title">
-        <p>智慧高考填报推荐系统</p>
-    </div>
-    <div id="videoContainer">
-        <video id="myVideo" autoplay muted loop>
-            <source src="{{ url_for('static', filename='video/sea.mp4') }}" type="video/mp4">
-            你的浏览器不支持 HTML5 视频标签。
-        </video>
-    </div>
-</div>
 <div id="body_frame">
     <form action="/school" method="post">
-        <h1 style="font-size: 25px">本科批志愿填报</h1>
+        <h1>本科批志愿填报</h1>
         <label>选科:</label>
         <input type="radio" id="science" name="gender" value="science" checked>
         <label for="science">理科</label>
         <input type="radio" id="arts" name="gender" value="arts">
         <label for="arts">文科</label><br/><br/>
         <label>分数:</label>
-        <input type="text" id="numericInput" name="grade" oninput="validateInput(this)"><label>&nbsp;分<label><br style="display: none"/>
-        <p><input type="submit" value="提交"><input type="button" onclick="toc()" value="2C及专科批点此填报"></p>
+        <input type="text" id="numericInput" name="grade" oninput="validateInput(this)"><label style="font-size: 25px">&nbsp;分<label><br/><br/>
+        <input type="submit" style="margin-top: 0;" value="提交">
+        <input type="button" style="margin-top: 0;" onclick="toc()" value="2C及专科批点此填报">
     </form>
-</div>
-<div id="school_data">
+
     {% if num != 0 %}
-        <div id="school_list">
-            <p>您的分数是：{{ num }}</p>
-            <p>您的排名是：{{ grade }}</p>
-            <h2>您可以考虑以下学校:</h2>
-            <ul>
-                {% for k, v in re_dt.items() %}
-                    <li>
-                        <h3><a href="{{ url_for('school_major', school_name=k) }}" target="_blank">{{ k }}</a></h3>
-                        <ul>
-                            {% for item in v %}
-                                <li>{{ item[0] }} {{ item[1] }} {{ item[2] }}</li>
-                                <hr/>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div style="height: 100px;"></div>
+    <div id="school_list">
+        <p>您的分数是：{{ num }}</p>
+        <p>您的排名是：{{ grade }}</p>
+        <h2>您可以考虑以下学校:</h2>
+        <ul>
+            {% for k, v in re_dt.items() %}
+            <li>
+                <h3><a href="{{ url_for('school_major', school_name=k) }}" target="_blank">{{ k }}</a></h3>
+                <ul>
+                    {% for item in v %}
+                    <li>{{ item[0] }} {{ item[1] }} {{ item[2] }}</li>
+                    <hr/>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="height: 100px;"></div>
     {% endif %}
 </div>
+
 <div id="bottom_frame">
     <div id="bottom_left">
-        <p></p>
+        <p>2024年高考志愿填报</p>
     </div>
     <div id="bottom_right">
         <p></p>
     </div>
 </div>
+
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
        var video = document.getElementById('myVideo');
        video.play();
    });
@@ -358,7 +385,6 @@
             console.log("跳转2C页面");
             window.location.href = "./2c";
         }
-
 </script>
 
 </body>
